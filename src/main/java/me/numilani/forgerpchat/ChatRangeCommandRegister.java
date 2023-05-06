@@ -3,6 +3,7 @@ package me.numilani.forgerpchat;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import me.numilani.forgerpchat.commands.ChatToRangeCommand;
+import me.numilani.forgerpchat.commands.UpdateSelectedRangeCommand;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -14,6 +15,7 @@ public class ChatRangeCommandRegister {
         LiteralCommandNode<CommandSourceStack> cmdTut = dispatcher.register(
                 Commands.literal("cr")
                         .then(ChatToRangeCommand.register(dispatcher))
+                        .then(UpdateSelectedRangeCommand.register(dispatcher))
         );
 
 //        dispatcher.register(Commands.literal("gl").then())
