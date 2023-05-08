@@ -67,12 +67,10 @@ public class ForgeRPChat {
     }
 
     public static void registerCaps(RegisterCapabilitiesEvent event) {
-        LOGGER.info("registerCaps() called");
         event.register(ChatRange.class);
     }
 
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
-        LOGGER.info("onAttachCapabilitiesPlayer() called");
         if (event.getObject() instanceof Player) {
             if (!event.getObject().getCapability(ChatRangeProvider.PLAYER_CHATRANGE).isPresent()) {
                 event.addCapability(new ResourceLocation("forgerpchat", "defaultchatrange"), new ChatRangeProvider());
@@ -81,7 +79,6 @@ public class ForgeRPChat {
     }
 
     public static void onPlayerCloned(PlayerEvent.Clone event){
-        LOGGER.info("onPlayerCloned() called");
         if (event.isWasDeath()){
             event.getOriginal().getCapability(ChatRangeProvider.PLAYER_CHATRANGE).ifPresent(oldStore ->{
                 event.getPlayer().getCapability(ChatRangeProvider.PLAYER_CHATRANGE).ifPresent(newStore ->{
